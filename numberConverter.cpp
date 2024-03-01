@@ -68,7 +68,7 @@ int main()
     cout << "Enter number: "; cin >> number;
     int length = digitsCounter(number);     // calculating length of input
 
-
+    
 
 
     if(length == 1)
@@ -160,6 +160,37 @@ int main()
     }
    
 
+
+
+
+   else if(length == 4)
+   {
+        if(number % 1000 == 0)
+        {
+            cout << basicNumbers(number / 1000) << " Thousand";
+        }
+        else if(number % 1000 < 1000)
+        {
+            if(number % 1000 >= 100)
+            {
+                if(number % 100 == 0)
+                {
+                    cout << basicNumbers(number / 1000) << " Thousand " << basicNumbers((number % 1000) / 100) << " Hundred";
+                }
+                else
+                {
+                    if(number % 10 == 0)
+                    {
+                        cout << basicNumbers(number / 1000) << " Thousand " << basicNumbers((number % 1000) / 100) << " Hundred " << basicNumbers(number % 100);
+                    }
+                }
+            }
+            else if(number % 1000 < 100)
+            {
+
+            }
+        }
+    }
 
 /*
     else if(length == 4 || length == 5)

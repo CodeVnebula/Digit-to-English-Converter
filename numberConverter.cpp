@@ -172,21 +172,125 @@ int main()
         else if(number % 1000 < 1000)
         {
             if(number % 1000 >= 100)
-            {
-                if(number % 100 == 0)
-                {
+            {       
+                // for nums over 1100, 2100, 3100, 4100, 5100, 6100, 7100, 8100, 9100!
+                if(number % 100 == 0)       // for nums correctly divisible by 100
                     cout << basicNumbers(number / 1000) << " Thousand " << basicNumbers((number % 1000) / 100) << " Hundred";
-                }
+                
                 else
                 {
-                    if(number % 10 == 0)
+                    if(number % 10 == 0)        // for nums divisible by 10
                     {
-                        cout << basicNumbers(number / 1000) << " Thousand " << basicNumbers((number % 1000) / 100) << " Hundred " << basicNumbers(number % 100);
+
+
+                        if(number % 100 == 10)      
+                            cout << basicNumbers(number / 1000) << " Thousand " << basicNumbers((number % 1000) / 100) << " Hundred " << basicNumbers(number % 100);
+
+                        else if(number % 100 <= 50)
+                            cout << basicNumbers(number / 1000) << " Thousand " << basicNumbers((number % 1000) / 100) << " Hundred " << tenToHundred(number % 100);
+                        
+                        else if(number % 100 == 80)
+                            cout << basicNumbers(number / 1000) << " Thousand " << basicNumbers((number % 1000) / 100) << " Hundred " << basicNumbers((number % 100) / 10) << "y";
+                        
+                        else
+                            cout << basicNumbers(number / 1000) << " Thousand " << basicNumbers((number % 1000) / 100) << " Hundred " << basicNumbers((number % 100) / 10) << "ty";
                     }
+
+                    else if(number % 100 < 10)
+                        cout << basicNumbers(number / 1000) << " Thousand " << basicNumbers((number % 1000) / 100) << " Hundred " << basicNumbers((number % 100) % 10);
+                    
+                    else if(number % 100 < 20)
+                    {
+                        if(number % 100 <= 15)
+                        {
+                            if(number % 100 != 14)
+                                cout << basicNumbers(number / 1000) << " Thousand " << basicNumbers((number % 1000) / 100) << " Hundred " << tenTofifteen(number % 100);
+                            else if(number % 100 == 14)
+                                cout << basicNumbers(number / 1000) << " Thousand " << basicNumbers((number % 1000) / 100) << " Hundred " << basicNumbers((number % 100) % 10) << "teen";
+                            
+                        }
+                        else
+                        {
+                            if(number % 100 == 18)
+                                cout << basicNumbers(number / 1000) << " Thousand " << basicNumbers((number % 1000) / 100) << " Hundred " << basicNumbers((number % 100) % 10) << "een";
+                            else if(number % 100 != 18)
+                                cout << basicNumbers(number / 1000) << " Thousand " << basicNumbers((number % 1000) / 100) << " Hundred " << basicNumbers((number % 100) % 10) << "teen";
+                        }
+
+        
+                        
+                    }
+
+                    else if(number % 100 < 60)
+                        cout << basicNumbers(number / 1000) << " Thousand " << basicNumbers((number % 1000) / 100) << " Hundred " << tenToHundred((number % 100) - (number % 10)) << " " << basicNumbers(number % 10);
+
+                    else
+                    {
+                        if(number % 100 > 80 && number % 100 < 90)
+                            cout << basicNumbers(number / 1000) << " Thousand " << basicNumbers((number % 1000) / 100) << " Hundred " << basicNumbers((number % 100) / 10) << "y " << basicNumbers(number % 10);
+                    
+                        else 
+                            cout << basicNumbers(number / 1000) << " Thousand " << basicNumbers((number % 1000) / 100) << " Hundred " << basicNumbers((number % 100) / 10) << "ty " << basicNumbers(number % 10);
+                    }
+    
                 }
             }
+            
+            
             else if(number % 1000 < 100)
             {
+                if(number % 10 == 0)        // for nums divisible by 10
+                {
+
+
+                        if(number % 100 == 10)      
+                            cout << basicNumbers(number / 1000) << " Thousand " << basicNumbers(number % 100);
+
+                        else if(number % 100 <= 50)
+                            cout << basicNumbers(number / 1000) << " Thousand " << tenToHundred(number % 100);
+                        
+                        else if(number % 100 == 80)
+                            cout << basicNumbers(number / 1000) << " Thousand " << basicNumbers((number % 100) / 10) << "y";
+                        
+                        else
+                            cout << basicNumbers(number / 1000) << " Thousand " << basicNumbers((number % 100) / 10) << "ty";
+                }
+
+                else if(number % 100 < 10)
+                        cout << basicNumbers(number / 1000) << " Thousand " << basicNumbers((number % 100) % 10);
+
+
+                else if(number % 100 < 20)
+                {
+                    if(number % 100 <= 15)
+                    {
+                        if(number % 100 != 14)
+                            cout << basicNumbers(number / 1000) << " Thousand " << tenTofifteen(number % 100);
+                        else if(number % 100 == 14)
+                            cout << basicNumbers(number / 1000) << " Thousand " << " Hundred " << basicNumbers((number % 100) % 10) << "teen";
+                            
+                    }
+                    else
+                    {
+                        if(number % 100 == 18)
+                            cout << basicNumbers(number / 1000) << " Thousand " << basicNumbers((number % 100) % 10) << "een";
+                        else if(number % 100 != 18)
+                            cout << basicNumbers(number / 1000) << " Thousand " << basicNumbers((number % 100) % 10) << "teen";
+                    }
+                }
+
+                else if(number % 100 < 60)
+                    cout << basicNumbers(number / 1000) << " Thousand " << tenToHundred((number % 100) - (number % 10)) << " " << basicNumbers(number % 10);
+
+                else
+                {
+                    if(number % 100 > 80 && number % 100 < 90)
+                        cout << basicNumbers(number / 1000) << " Thousand " << basicNumbers((number % 100) / 10) << "y " << basicNumbers(number % 10);
+                    
+                    else 
+                        cout << basicNumbers(number / 1000) << " Thousand " << basicNumbers((number % 100) / 10) << "ty " << basicNumbers(number % 10);
+                }
+
 
             }
         }
